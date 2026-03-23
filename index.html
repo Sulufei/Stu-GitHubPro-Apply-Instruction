@@ -1,0 +1,2467 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Copilot Pro 免費申請指南｜樹德科技大學電算中心</title>
+    <style>
+      :root {
+        --primary: #1a56db;
+        --primary-dark: #1e429f;
+        --primary-light: #e8f0fe;
+        --secondary: #1f883d;
+        --bg: #f8f9fc;
+        --card-bg: #ffffff;
+        --border: #dde3ef;
+        --text: #1a202c;
+        --muted: #5a6580;
+        --warn-bg: #fffbeb;
+        --warn-border: #d97706;
+        --info-bg: #eff6ff;
+        --info-border: #3b82f6;
+        --ok-bg: #f0fdf4;
+        --ok-border: #22c55e;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC',
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* ═══ Header ═══ */
+      header {
+        background: #fff;
+        border-bottom: 3px solid var(--primary);
+        position: sticky;
+        top: 0;
+        z-index: 200;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      .header-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 12px 28px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      /* ★ 修正：直接在 .header-inner > svg 上限制大小 */
+      .header-inner > svg {
+        width: 28px;
+        height: 28px;
+        fill: var(--primary);
+        flex-shrink: 0;
+      }
+      .header-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        letter-spacing: 0.02em;
+      }
+      .header-divider {
+        width: 1px;
+        height: 20px;
+        background: var(--border);
+        margin: 0 4px;
+      }
+      .header-org {
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+      .header-badge {
+        margin-left: auto;
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 3px 12px;
+        border-radius: 20px;
+        border: 1px solid #c3d3f7;
+      }
+
+      /* ═══ Hero ═══ */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark) 0%,
+          var(--primary) 60%,
+          #3b82f6 100%
+        );
+        color: #fff;
+        padding: 52px 24px 44px;
+        text-align: center;
+      }
+      .hero-eyebrow {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 20px;
+        padding: 4px 16px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+      }
+      .hero h1 {
+        font-size: 1.85rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+        letter-spacing: -0.01em;
+      }
+      .hero p {
+        font-size: 1rem;
+        opacity: 0.88;
+        max-width: 580px;
+        margin: 0 auto 22px;
+      }
+      .badge-row {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .badge {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+        padding: 5px 14px;
+        font-size: 0.82rem;
+        font-weight: 500;
+      }
+
+      /* ═══ Nav ═══ */
+      .nav-bar {
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 56px;
+        z-index: 100;
+      }
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        overflow-x: auto;
+        padding: 0 28px;
+        scrollbar-width: none;
+      }
+      .nav-inner::-webkit-scrollbar {
+        display: none;
+      }
+      .nav-inner a {
+        text-decoration: none;
+        color: var(--muted);
+        font-size: 0.88rem;
+        font-weight: 500;
+        padding: 13px 14px;
+        border-bottom: 2px solid transparent;
+        white-space: nowrap;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .nav-inner a:hover {
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      /* ═══ Layout ═══ */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 28px 72px;
+      }
+      section {
+        margin-bottom: 56px;
+      }
+      h2 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--primary-dark);
+      }
+      h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 20px 0 8px;
+        color: var(--text);
+      }
+
+      /* ═══ Cards ═══ */
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 18px;
+      }
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 22px 24px;
+        transition:
+          box-shadow 0.2s,
+          border-color 0.2s;
+      }
+      .card:hover {
+        box-shadow: 0 4px 18px rgba(26, 86, 219, 0.1);
+        border-color: #b0c5f5;
+      }
+      .card-label {
+        display: inline-block;
+        font-size: 0.74rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        letter-spacing: 0.04em;
+      }
+      .label-student {
+        background: #dbeafe;
+        color: #1e3a8a;
+        border: 1px solid #93c5fd;
+      }
+      .label-teacher {
+        background: #fef3c7;
+        color: #78350f;
+        border: 1px solid #fcd34d;
+      }
+      .label-feature {
+        background: #f3e8ff;
+        color: #5b21b6;
+        border: 1px solid #c4b5fd;
+      }
+      .card h3 {
+        margin-top: 0;
+        font-size: 1.05rem;
+      }
+      .card p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.65;
+      }
+
+      /* ═══ Steps ═══ */
+      .steps {
+        list-style: none;
+        counter-reset: step;
+      }
+      .steps > li {
+        counter-increment: step;
+        display: flex;
+        gap: 18px;
+        margin-bottom: 30px;
+        align-items: flex-start;
+      }
+      .steps > li::before {
+        content: counter(step);
+        min-width: 32px;
+        height: 32px;
+        background: var(--primary);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.88rem;
+        flex-shrink: 0;
+        margin-top: 3px;
+      }
+      .step-content {
+        flex: 1;
+      }
+      .step-content > strong {
+        font-size: 1rem;
+        display: block;
+        margin-bottom: 5px;
+        color: var(--text);
+      }
+      .step-content > p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+      .step-content a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+      .step-content a:hover {
+        text-decoration: underline;
+      }
+
+      /* ═══ Screenshot ═══ */
+      .screenshot-wrap {
+        margin: 14px 0 4px;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        background: #f1f4fb;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      }
+      .screenshot-wrap img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .img-fallback {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 20px;
+        text-align: center;
+        gap: 8px;
+        border: 2px dashed #93a5d0;
+        border-radius: 8px;
+        background: #f1f4fb;
+      }
+      .fallback-icon {
+        font-size: 2.2rem;
+      }
+      .fallback-filename {
+        font-family: 'SFMono-Regular', Consolas, monospace;
+        font-size: 0.82rem;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 3px 12px;
+        color: var(--primary);
+        font-weight: 600;
+      }
+      .fallback-desc {
+        color: var(--muted);
+        font-size: 0.85rem;
+        max-width: 500px;
+      }
+      .img-caption {
+        font-size: 0.8rem;
+        color: var(--muted);
+        padding: 7px 14px;
+        background: #f8f9fc;
+        border-top: 1px solid var(--border);
+        text-align: center;
+      }
+
+      /* ═══ Callout ═══ */
+      .callout {
+        border-radius: 8px;
+        padding: 13px 16px;
+        margin: 12px 0;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        font-size: 0.88rem;
+        line-height: 1.6;
+      }
+      .callout-icon {
+        font-size: 1rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .callout-warn {
+        background: var(--warn-bg);
+        border-left: 4px solid var(--warn-border);
+      }
+      .callout-info {
+        background: var(--info-bg);
+        border-left: 4px solid var(--info-border);
+      }
+      .callout-ok {
+        background: var(--ok-bg);
+        border-left: 4px solid var(--ok-border);
+      }
+
+      /* ═══ Code ═══ */
+      code {
+        background: #eef1f9;
+        border: 1px solid #c9d4ee;
+        border-radius: 4px;
+        padding: 1px 6px;
+        font-family: 'SFMono-Regular', Consolas, monospace;
+        font-size: 0.84em;
+        color: #1e3a8a;
+      }
+
+      /* ═══ Tabs ═══ */
+      .tab-buttons {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .tab-btn {
+        padding: 8px 22px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background: #fff;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--muted);
+        transition: all 0.2s;
+      }
+      .tab-btn.active {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+      }
+      .tab-panel {
+        display: none;
+      }
+      .tab-panel.active {
+        display: block;
+      }
+
+      /* ═══ Req list ═══ */
+      .req-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .req-list li {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        padding: 10px 16px;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+      .req-list li::before {
+        content: '✓';
+        color: var(--secondary);
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      /* ═══ FAQ ═══ */
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      details {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      summary {
+        cursor: pointer;
+        padding: 15px 20px;
+        font-weight: 600;
+        font-size: 0.93rem;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        user-select: none;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary::after {
+        content: '＋';
+        margin-left: auto;
+        color: var(--primary);
+        font-weight: 400;
+      }
+      details[open] summary::after {
+        content: '－';
+      }
+      details[open] summary {
+        background: var(--primary-light);
+        border-bottom: 1px solid var(--border);
+      }
+      .faq-answer {
+        padding: 16px 20px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.75;
+      }
+      .faq-answer ul {
+        padding-left: 20px;
+        margin-top: 8px;
+      }
+      .faq-answer li {
+        margin-bottom: 5px;
+      }
+      .faq-answer a {
+        color: var(--primary);
+      }
+
+      /* ═══ Footer ═══ */
+      footer {
+        background: var(--primary-dark);
+        color: #c3d3f7;
+        text-align: center;
+        padding: 28px;
+        font-size: 0.82rem;
+      }
+      footer a {
+        color: #93c5fd;
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+      footer strong {
+        color: #fff;
+      }
+
+      /* ═══ Responsive ═══ */
+      @media (max-width: 640px) {
+        .hero h1 {
+          font-size: 1.4rem;
+        }
+        h2 {
+          font-size: 1.15rem;
+        }
+        .header-badge {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ════ Header ════ -->
+    <header>
+      <div class="header-inner">
+        <!-- ★ 直接在 svg 標籤加 width/height，確保不會撐版 -->
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            fill="#1a56db"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+        0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+        -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+        .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+        -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27
+        .68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12
+        .51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+        0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+          />
+        </svg>
+        <span class="header-title">GitHub Copilot Pro 申請指南</span>
+        <span class="header-divider"></span>
+        <span class="header-org">樹德科技大學電算中心 提供</span>
+        <span class="header-badge">學術免費方案</span>
+      </div>
+    </header>
+
+    <!-- ════ Hero ════ -->
+    <div class="hero">
+      <span class="hero-eyebrow">樹德科技大學電算中心 · GitHub Education</span>
+      <h1>GitHub Copilot Pro<br />學術版免費申請手冊</h1>
+      <p>
+        本校在學學生與現職教職員，均可透過 GitHub Education 驗證，免費取得
+        Copilot Pro 完整功能。
+      </p>
+      <div class="badge-row">
+        <span class="badge">🎓 學生免費</span>
+        <span class="badge">👩‍🏫 教職員免費</span>
+        <span class="badge">💻 VS Code 整合</span>
+        <span class="badge">🤖 AI 程式碼補全</span>
+      </div>
+    </div>
+
+    <!-- ════ Navigation ════ -->
+    <nav class="nav-bar">
+      <div class="nav-inner">
+        <a href="#intro">關於 Copilot Pro</a>
+        <a href="#prereq">申請前準備</a>
+        <a href="#apply">申請流程</a>
+        <a href="#activate">啟用 Copilot Pro</a>
+        <a href="#vscode">VS Code 設定</a>
+        <a href="#faq">常見問題</a>
+        <a href="#support">聯絡支援</a>
+      </div>
+    </nav>
+
+    <!-- ════ Container ════ -->
+    <div class="container">
+      <!-- ── 關於 ── -->
+      <section id="intro">
+        <h2>📖 關於 GitHub Copilot Pro</h2>
+        <div class="card-grid">
+          <div class="card">
+            <span class="card-label label-student">學生</span>
+            <h3>🎓 學生免費方案</h3>
+            <p>
+              在學學生（大學部、碩士班、博士班）通過 GitHub Education
+              驗證後，可免費使用 Copilot Pro，效益持續至畢業為止。
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-label label-teacher">教職員</span>
+            <h3>👩‍🏫 教師免費方案</h3>
+            <p>
+              現職教師、研究人員及學校職員，通過 GitHub Education
+              教師身分驗證後，可持續免費享有完整 Copilot Pro 功能。
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-label label-feature">功能亮點</span>
+            <h3>✨ Copilot Pro 功能</h3>
+            <p>
+              無限次程式碼補全、Copilot Chat 對話、多模型選擇（GPT-4o、Claude
+              等），支援 VS Code、JetBrains、Vim 等主流 IDE。
+            </p>
+          </div>
+        </div>
+        <div class="callout callout-info">
+          <span class="callout-icon">ℹ️</span>
+          <div>
+            <strong>Pro vs Free 差異：</strong>
+            <table
+              style="
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 0.88rem;
+                margin-top: 8px;
+              "
+            >
+              <thead>
+                <tr style="background: #e8f0fe; color: #1e3a8a">
+                  <th
+                    style="
+                      padding: 7px 12px;
+                      text-align: left;
+                      border: 1px solid var(--border);
+                    "
+                  >
+                    功能
+                  </th>
+                  <th
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                    "
+                  >
+                    Free
+                  </th>
+                  <th
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                    "
+                  >
+                    Pro 教育版（學生）
+                  </th>
+                  <th
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                    "
+                  >
+                    Pro 教育版（教師）
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background: #fff">
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      border: 1px solid var(--border);
+                      color: var(--muted);
+                    "
+                  >
+                    程式碼補全（inline）
+                  </td>
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                      color: var(--muted);
+                    "
+                  >
+                    每月 2,000 次
+                  </td>
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                      color: #16a34a;
+                      font-weight: 600;
+                    "
+                  >
+                    無限制
+                  </td>
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                      color: #16a34a;
+                      font-weight: 600;
+                    "
+                  >
+                    無限制
+                  </td>
+                </tr>
+                <tr style="background: #f8f9fc">
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      border: 1px solid var(--border);
+                      color: var(--muted);
+                    "
+                  >
+                    Premium requests<br /><small
+                      >（與付費版 Pro 相同上限）</small
+                    >
+                  </td>
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                      color: var(--muted);
+                    "
+                  >
+                    每月 50 次
+                  </td>
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                      color: var(--muted);
+                      font-weight: 600;
+                    "
+                  >
+                    每月 300 次
+                  </td>
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                      color: var(--muted);
+                      font-weight: 600;
+                    "
+                  >
+                    每月 300 次
+                  </td>
+                </tr>
+                <tr style="background: #fff">
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      border: 1px solid var(--border);
+                      color: var(--muted);
+                    "
+                  >
+                    Copilot Chat（基礎模型）
+                  </td>
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                      color: var(--muted);
+                    "
+                  >
+                    每月 50 次
+                  </td>
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                      color: #16a34a;
+                      font-weight: 600;
+                    "
+                  >
+                    無限制
+                  </td>
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                      color: #16a34a;
+                      font-weight: 600;
+                    "
+                  >
+                    無限制
+                  </td>
+                </tr>
+                <tr style="background: #f8f9fc">
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      border: 1px solid var(--border);
+                      color: var(--muted);
+                    "
+                  >
+                    進階 AI 模型手動選擇<br /><small
+                      >（Claude Sonnet/Opus、GPT-5.4 等）</small
+                    >
+                  </td>
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                      color: var(--muted);
+                    "
+                  >
+                    受限
+                  </td>
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                      color: #dc2626;
+                      font-weight: 600;
+                    "
+                  >
+                    ⚠️ 2026/3/12 起移除
+                  </td>
+                  <td
+                    style="
+                      padding: 7px 12px;
+                      text-align: center;
+                      border: 1px solid var(--border);
+                      color: #16a34a;
+                      font-weight: 600;
+                    "
+                  >
+                    ✅ 可手動選擇
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div
+              style="
+                margin-top: 10px;
+                padding: 10px 14px;
+                background: #fff8e1;
+                border-left: 3px solid #f59e0b;
+                border-radius: 0 6px 6px 0;
+                font-size: 0.85rem;
+                color: #78350f;
+              "
+            >
+              ⚠️ <strong>學生方案重要變更（2026/3/12 起）：</strong>GitHub
+              宣布學生版 Copilot 改為新的「GitHub Copilot Student
+              Plan」，GPT-5.4、Claude Opus、Claude Sonnet
+              等進階模型已無法手動選擇，Chat 僅能使用 Auto
+              模式（系統自動路由至較基礎模型）。教師方案目前未受此限制影響。
+            </div>
+            <span
+              style="
+                display: block;
+                margin-top: 6px;
+                font-size: 0.82rem;
+                color: var(--muted);
+              "
+              >Premium requests 每月 1 日重置，上限與付費版 Pro 相同（300
+              次）；超額後可付費補充（每次 $0.04
+              USD），或切換回基礎模型繼續免費使用。</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 申請前準備 ── -->
+      <section id="prereq">
+        <h2>📋 申請前準備</h2>
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab(event, 'student')">
+            🎓 學生
+          </button>
+          <button class="tab-btn" onclick="switchTab(event, 'teacher')">
+            👩‍🏫 教職員
+          </button>
+        </div>
+        <div id="tab-student" class="tab-panel active">
+          <h3>學生申請資格與所需文件</h3>
+          <ul class="req-list">
+            <li>目前就讀大學、碩博士等學位課程（至少 13 歲）</li>
+            <li>擁有學校核發的電子郵件帳號（<code>@xxx.edu.tw</code>）</li>
+            <li>已建立個人 GitHub 帳號（免費即可）</li>
+            <li>
+              備妥以下任一證明文件（照片或掃描檔）：學生證（需顯示在學年度）、當學期課表截圖、在學證明書或成績單
+            </li>
+          </ul>
+          <div class="callout callout-warn">
+            <span class="callout-icon">⚠️</span>
+            <div>
+              建議使用<strong>手機拍攝</strong>學生證等文件，畫素較高、審核通過率更高。文件需清晰可辨，不可有遮擋。
+            </div>
+          </div>
+        </div>
+        <div id="tab-teacher" class="tab-panel">
+          <h3>教職員申請資格與所需文件</h3>
+          <ul class="req-list">
+            <li>現職教師、研究員或學校職員</li>
+            <li>擁有學校核發的電子郵件帳號（<code>@xxx.edu.tw</code>）</li>
+            <li>已建立個人 GitHub 帳號（免費即可）</li>
+            <li>
+              備妥以下任一證明文件：教職員證或服務證、學校出具的任職證明函、近期薪資單（需顯示學校名稱）
+            </li>
+          </ul>
+          <div class="callout callout-info">
+            <span class="callout-icon">ℹ️</span>
+            <div>
+              教師審核通常需要 <strong>1–14 個工作天</strong>，視 GitHub
+              人工審核排程而定，建議提早申請。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 申請流程 ── -->
+      <section id="apply">
+        <h2>📝 GitHub Education 申請流程</h2>
+        <div class="callout callout-info">
+          <span class="callout-icon">💡</span>
+          <div>
+            學生與教師的申請流程相同，差異僅在選擇身分時，以下步驟適用於兩者。
+          </div>
+        </div>
+
+        <div
+          class="callout callout-warn"
+          style="border-left-color: #dc2626; background: #fff1f2"
+        >
+          <span class="callout-icon">📱</span>
+          <div>
+            <strong
+              style="
+                color: #dc2626;
+                font-size: 1rem;
+                display: block;
+                margin-bottom: 6px;
+              "
+              >強烈建議：使用手機行動網路（4G/5G）申請！</strong
+            >
+            台灣許多大學透過 TANet（台灣學術網路）對外連線，出口 IP
+            位於台北，GitHub
+            的地理位置驗證機制可能因此誤判您不在校園內，導致申請被拒絕。<br /><br />
+            <strong>申請前請這樣做：</strong>
+            <ol style="margin: 8px 0 0 20px; line-height: 2.1">
+              <li>使用<strong>手機</strong>開啟瀏覽器（Chrome / Safari）</li>
+              <li><strong>關閉 WiFi</strong>，改用行動數據（4G / 5G）</li>
+              <li>確認手機的<strong>位置存取權限</strong>已開啟</li>
+              <li>
+                前往
+                <a href="https://github.com/settings/education" target="_blank"
+                  >github.com/settings/education</a
+                >
+                進行申請
+              </li>
+            </ol>
+            <span
+              style="
+                display: block;
+                margin-top: 8px;
+                color: #57606a;
+                font-size: 0.88rem;
+              "
+              >✅
+              此方法已經本校電算中心實測確認，可有效避免位置驗證失敗被拒絕的問題。</span
+            >
+          </div>
+        </div>
+        <ol class="steps">
+          <li>
+            <div class="step-content">
+              <strong>建立或登入 GitHub 個人帳號</strong>
+              <p>
+                前往
+                <a href="https://github.com" target="_blank">github.com</a
+                >，若尚未有帳號請先完成免費註冊。使用個人常用 email
+                建立帳號即可。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-01-github-login.jpg"
+                  alt="GitHub 首頁登入畫面"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-01-github-login.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：github.com 首頁，顯示「Sign in」與「Sign
+                    up」按鈕的畫面</span
+                  >
+                </div>
+                <div class="img-caption">▲ GitHub 首頁 / 登入頁面</div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>將學校信箱加入 GitHub 帳號</strong>
+              <p>
+                前往
+                <a href="https://github.com/settings/emails" target="_blank"
+                  >Settings → Emails</a
+                >，點擊「Add email address」，輸入學校
+                email（<code>帳號@stu.edu.tw</code>）並完成信箱驗證（收信點連結）。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-02-add-email.jpg"
+                  alt="Settings Emails 新增學校信箱"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-02-add-email.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：GitHub Settings → Emails 頁面，顯示「Add email
+                    address」欄位與新增按鈕</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ Settings → Emails：新增並驗證學校信箱
+                </div>
+              </div>
+              <div class="callout callout-warn">
+                <span class="callout-icon">⚠️</span>
+                <div>
+                  請確認學校信箱已完成
+                  <strong>Email 驗證</strong
+                  >（收信並點擊驗證連結），否則後續申請將無法通過。
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>前往 GitHub Education 申請頁</strong>
+              <p>
+                前往
+                <a href="https://education.github.com" target="_blank"
+                  >education.github.com</a
+                >，點擊頁面中的「Join GitHub Education」按鈕。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-03-education-home.jpg"
+                  alt="GitHub Education 首頁"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-03-education-home.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：education.github.com 首頁，顯示醒目的「Join
+                    GitHub Education」按鈕</span
+                  >
+                </div>
+                <div class="img-caption">▲ GitHub Education 首頁</div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>進入 Education Benefits 設定頁</strong>
+              <p>
+                也可直接前往
+                <a href="https://github.com/settings/education" target="_blank"
+                  >github.com/settings/education</a
+                >，在「GitHub Education」區塊點擊「<strong
+                  >Start an application</strong
+                >」。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-04-settings-education.jpg"
+                  alt="Settings Education 頁面"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-04-settings-education.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：github.com/settings/education 頁面，顯示「Start
+                    an application」按鈕</span
+                  >
+                </div>
+                <div class="img-caption">▲ Settings → Education：開始申請</div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>選擇身分並填寫表單</strong>
+              <p>
+                選擇「<strong>Student（學生）</strong>」或「<strong>Teacher（教師）</strong>」，搜尋並選擇學校名稱、選擇學校信箱，填寫
+                GitHub 的使用用途。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-05-select-role.jpg"
+                  alt="選擇學生或教師身分"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-05-select-role.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：申請表單頁面，顯示身分選擇（Student /
+                    Teacher）、學校名稱搜尋欄、信箱選擇下拉選單</span
+                  >
+                </div>
+                <div class="img-caption">▲ 選擇身分與填寫學校資訊</div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>上傳身分證明文件</strong>
+              <p>
+                點擊上傳區域，上傳學生證、課表或在學證明等照片，確保文字清晰可辨後，點擊「<strong
+                  >Submit application</strong
+                >」送出。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-06-upload-doc.jpg"
+                  alt="上傳身分證明文件"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-06-upload-doc.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：文件上傳頁面，顯示上傳按鈕（或拖曳區域）、預覽照片，以及「Submit
+                    application」按鈕</span
+                  >
+                </div>
+                <div class="img-caption">▲ 上傳在學/在職證明文件並送出</div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>【若出現】「Why are you not on campus?」錯誤處理</strong>
+              <p>
+                上傳文件後，若出現如下錯誤提示，代表 GitHub 偵測到您的 IP
+                位置與學校地理位置不符。<strong
+                  >台灣許多大學透過 TANet（台灣學術網路）對外連線，出口 IP
+                  位於台北</strong
+                >，即使人在校園內也可能觸發此警告，屬正常現象。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-06b-not-on-campus.jpg"
+                  alt="Why are you not on campus 錯誤畫面"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-06b-not-on-campus.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：出現「Your application cannot be reviewed until
+                    you fix the following: Please upload an image to help us
+                    understand why you are so far from
+                    campus.」錯誤提示的畫面</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ TANet 連線觸發的校外 IP 警告畫面
+                </div>
+              </div>
+
+              <h3 style="margin-top: 16px">處理步驟</h3>
+              <ol
+                style="
+                  padding-left: 20px;
+                  color: var(--muted);
+                  font-size: 0.9rem;
+                  line-height: 1.85;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 8px;
+                "
+              >
+                <li>
+                  選擇 <strong>「Other」</strong>（因為是 TANet
+                  網路問題，不屬於其他三個選項）
+                </li>
+                <li>
+                  在
+                  <strong>「Please provide a brief explanation」</strong>
+                  欄位填入以下說明（可複製）：<br />
+                  <div
+                    style="
+                      background: #f1f4fb;
+                      border: 1px solid var(--border);
+                      border-radius: 6px;
+                      padding: 10px 14px;
+                      margin-top: 8px;
+                      font-family: 'SFMono-Regular', Consolas, monospace;
+                      font-size: 0.82rem;
+                      color: #1e3a8a;
+                      line-height: 1.7;
+                    "
+                  >
+                    I am applying from a computer on campus. My university
+                    connects to the internet through TANet (Taiwan Academic
+                    Network), whose IP exit node is located in Taipei, which may
+                    appear geographically distant from our campus. I am a
+                    current student/faculty at [學校英文全名].
+                  </div>
+                </li>
+                <li>
+                  在圖片上傳區域補充上傳<strong>學生證照片</strong>或<strong>課表截圖</strong>作為佐證
+                </li>
+                <li>點擊送出，等待人工審核（通常 1–5 個工作天）</li>
+              </ol>
+
+              <div class="callout callout-info" style="margin-top: 14px">
+                <span class="callout-icon">💡</span>
+                <div>
+                  若您有使用 VPN，請<strong>先關閉 VPN 再重新申請</strong
+                  >，可直接略過此步驟。台灣學校透過 TANet
+                  連線者，即使在校內申請也可能遇到此問題，填寫說明後人工審核通常均可通過。
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>【若出現】申請被拒絕（Rejected）的處理方式</strong>
+              <p>
+                送出後若收到拒絕通知，頁面會顯示紅色「Rejected」狀態與原因清單。<strong>不必擔心，依照以下步驟修正後重新申請即可通過</strong>。以下為最常見的拒絕原因與解決方法：
+              </p>
+
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-07b-rejected.jpg"
+                  alt="GitHub Education 申請被拒絕畫面"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-07b-rejected.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：Education Benefits
+                    頁面顯示紅色「Rejected」狀態與拒絕原因清單的畫面</span
+                  >
+                </div>
+                <div class="img-caption">▲ 申請被拒絕的頁面（Rejected）</div>
+              </div>
+
+              <h3 style="margin-top: 18px">📋 常見拒絕原因對照表</h3>
+              <div style="overflow-x: auto; margin: 10px 0">
+                <table
+                  style="
+                    width: 100%;
+                    border-collapse: collapse;
+                    font-size: 0.88rem;
+                  "
+                >
+                  <thead>
+                    <tr
+                      style="
+                        background: var(--primary-light);
+                        color: var(--primary-dark);
+                      "
+                    >
+                      <th
+                        style="
+                          padding: 10px 14px;
+                          text-align: left;
+                          border: 1px solid var(--border);
+                          width: 52%;
+                        "
+                      >
+                        GitHub 顯示的拒絕原因
+                      </th>
+                      <th
+                        style="
+                          padding: 10px 14px;
+                          text-align: left;
+                          border: 1px solid var(--border);
+                        "
+                      >
+                        解決方法
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="background: #fff">
+                      <td
+                        style="
+                          padding: 10px 14px;
+                          border: 1px solid var(--border);
+                          color: var(--muted);
+                        "
+                      >
+                        Please complete your GitHub billing information with
+                        your full name exactly as it appears in your academic
+                        affiliation document.
+                      </td>
+                      <td
+                        style="
+                          padding: 10px 14px;
+                          border: 1px solid var(--border);
+                          color: var(--muted);
+                        "
+                      >
+                        <strong>最關鍵</strong>：前往 Payment information
+                        填寫與證件完全一致的真實姓名（見下方步驟）
+                      </td>
+                    </tr>
+                    <tr style="background: #f8f9fc">
+                      <td
+                        style="
+                          padding: 10px 14px;
+                          border: 1px solid var(--border);
+                          color: var(--muted);
+                        "
+                      >
+                        You are unlikely to be verified until you have completed
+                        your GitHub user profile with your full name.
+                      </td>
+                      <td
+                        style="
+                          padding: 10px 14px;
+                          border: 1px solid var(--border);
+                          color: var(--muted);
+                        "
+                      >
+                        前往 Settings → Public
+                        profile，將「Name」欄位改為與證件一致的真實姓名
+                      </td>
+                    </tr>
+                    <tr style="background: #fff">
+                      <td
+                        style="
+                          padding: 10px 14px;
+                          border: 1px solid var(--border);
+                          color: var(--muted);
+                        "
+                      >
+                        Please secure your GitHub account with two-factor
+                        authentication.
+                      </td>
+                      <td
+                        style="
+                          padding: 10px 14px;
+                          border: 1px solid var(--border);
+                          color: var(--muted);
+                        "
+                      >
+                        前往 Settings → Password and
+                        authentication，開啟雙重驗證（2FA）
+                      </td>
+                    </tr>
+                    <tr style="background: #f8f9fc">
+                      <td
+                        style="
+                          padding: 10px 14px;
+                          border: 1px solid var(--border);
+                          color: var(--muted);
+                        "
+                      >
+                        You must configure your browser and operating system to
+                        allow location access. You may not use a VPN.
+                      </td>
+                      <td
+                        style="
+                          padding: 10px 14px;
+                          border: 1px solid var(--border);
+                          color: var(--muted);
+                        "
+                      >
+                        關閉 VPN；或選擇 Other 並說明為 TANet
+                        連線問題（參考上方步驟）
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3 style="margin-top: 20px">
+                🔧 最重要的修正步驟：填寫 Payment information
+              </h3>
+              <p style="color: var(--muted); font-size: 0.9rem">
+                前往
+                <a
+                  href="https://github.com/settings/billing/payment_information"
+                  target="_blank"
+                  >Settings → Billing and licensing → Payment information</a
+                >，依序填寫以下資訊：
+              </p>
+              <ul
+                style="
+                  padding-left: 20px;
+                  color: var(--muted);
+                  font-size: 0.9rem;
+                  line-height: 1.9;
+                  margin: 10px 0;
+                "
+              >
+                <li>
+                  <strong>First name / Last name</strong
+                  >：填寫與學生證、教職員證完全一致的真實姓名（英文）；若只有單一姓名，請在
+                  First name 與 Last name 欄位填入相同內容
+                </li>
+                <li>
+                  <strong>Address</strong>：No.59, Hengshan Rd., Yanchao
+                  Dist.，City 填: Kaohsiung
+                </li>
+                <li><strong>Country/Region</strong>：選擇 Taiwan</li>
+                <li>
+                  填完後點擊「<strong>Save billing information</strong>」儲存
+                </li>
+              </ul>
+
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-07c-payment-info.jpg"
+                  alt="GitHub Payment information 填寫畫面"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-07c-payment-info.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：Settings → Billing and licensing → Payment
+                    information 頁面，顯示 First name、Last
+                    name、Address、City、Country/Region 等欄位與「Save billing
+                    information」按鈕</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ Payment information：填寫與證件一致的姓名及學校地址
+                </div>
+              </div>
+
+              <div class="callout callout-warn" style="margin-top: 14px">
+                <span class="callout-icon">⚠️</span>
+                <div>
+                  修正完所有項目後，請先<strong>登出再重新登入</strong>
+                  GitHub，然後回到
+                  <a
+                    href="https://github.com/settings/education"
+                    target="_blank"
+                    >github.com/settings/education</a
+                  >
+                  點擊「<strong>Start an application</strong>」重新送出申請。
+                </div>
+              </div>
+
+              <h3 style="margin-top: 20px">✅ 重新申請成功：進入審查中狀態</h3>
+              <p style="color: var(--muted); font-size: 0.9rem">
+                修正後重新送出，頁面應顯示綠色進度條與「<strong>Pending</strong>」狀態，表示申請已送出並進入人工審查，靜待
+                GitHub 通知信即可。
+              </p>
+
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-07d-pending.jpg"
+                  alt="重新申請後顯示 Pending 審查中狀態"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-07d-pending.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：Education Benefits
+                    頁面顯示綠色進度條與「Pending」狀態，顯示「Your application
+                    has been received and is currently pending
+                    review.」的畫面</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ 重新申請成功：進入 Pending（審查中）狀態
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>等待審核結果</strong>
+              <p>
+                送出後 GitHub 進行自動或人工審核。學生通常
+                <strong>數小時～3 天</strong>可得到結果；教師有時需
+                <strong>1–14 個工作天</strong>。
+              </p>
+
+              <div class="callout callout-warn">
+                <span class="callout-icon">⚠️</span>
+                <div>
+                  審核結果<strong>不一定會寄送通知信</strong>至學校信箱。建議定期回到
+                  <a
+                    href="https://github.com/settings/education"
+                    target="_blank"
+                    >github.com/settings/education</a
+                  >
+                  頁面查看申請狀態。
+                </div>
+              </div>
+
+              <h3 style="margin-top: 16px">
+                ✅ 審核通過：「Approved / Awaiting Benefits」畫面
+              </h3>
+              <p style="color: var(--muted); font-size: 0.9rem">
+                通過審核後，頁面將顯示綠色「<strong>Approved</strong>」狀態與以下重要資訊：
+              </p>
+              <ul
+                style="
+                  padding-left: 20px;
+                  color: var(--muted);
+                  font-size: 0.9rem;
+                  line-height: 2;
+                  margin: 10px 0;
+                "
+              >
+                <li>
+                  <strong
+                    >Your academic status has been verified.
+                    Congratulations!</strong
+                  >
+                </li>
+                <li>
+                  教育福利將在通過驗證後的 <strong>72 小時內</strong>正式生效
+                </li>
+                <li>
+                  點擊頁面中的 <strong>「link」</strong> 連結，可直接兌換
+                  Copilot Pro 免費資格
+                </li>
+                <li>
+                  方案有效期限為 <strong>2 年</strong>（例：2026/3/19 通過 →
+                  到期日為 2028/3/19）
+                </li>
+              </ul>
+
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-09-approved.jpg"
+                  alt="GitHub Education 審核通過 Approved Awaiting Benefits 畫面"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-09-approved.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：Education Benefits
+                    頁面顯示綠色「Approved」狀態，內容包含「Your academic status
+                    has been verified. Congratulations!」、「after 72
+                    hours」與到期日的畫面</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ 審核通過：Approved / Awaiting Benefits 畫面
+                </div>
+              </div>
+
+              <h3 style="margin-top: 20px">⏳ 等待 72 小時後：福利正式生效</h3>
+              <p style="color: var(--muted); font-size: 0.9rem">
+                約 72 小時後，再次前往
+                <a href="https://github.com/settings/education" target="_blank"
+                  >github.com/settings/education</a
+                >，進度條會變成<strong>綠色 100%</strong>，狀態由「Awaiting
+                Benefits」升級為「<strong>Verified (benefits available)</strong
+                >」，並顯示「Coupon applied」與到期日。
+              </p>
+
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-09b-coupon-applied.jpg"
+                  alt="Education Benefits 福利生效：Coupon applied 100% 進度條"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-09b-coupon-applied.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：Education Benefits 頁面顯示「Coupon
+                    applied」與綠色 100% 進度條，狀態為「Verified (benefits
+                    available)」，並顯示到期日 March 19, 2028 的畫面</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ 72 小時後福利生效：Coupon applied，進度條 100%
+                </div>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ── 啟用 Copilot Pro ── -->
+      <section id="activate">
+        <h2>✅ 啟用 GitHub Copilot Pro</h2>
+        <div class="callout callout-warn">
+          <span class="callout-icon">⏳</span>
+          <div>
+            <strong>審核通過後，請等候最多 72 小時再執行以下步驟。</strong
+            ><br />
+            若在 72 小時內進入 Copilot
+            設定頁，會看到以下兩種「尚未生效」的畫面，屬正常現象，<strong
+              >請勿點擊「Upgrade now」付費升級</strong
+            >，靜待 72 小時後再回來操作即可。
+          </div>
+        </div>
+
+        <div class="card-grid" style="margin: 18px 0 28px">
+          <div class="card" style="border-color: #fca5a5; background: #fff5f5">
+            <h3 style="color: #dc2626">⚠️ 尚未生效畫面一</h3>
+            <p style="margin-bottom: 12px; color: var(--muted)">
+              Copilot settings 右上方顯示「<strong>Free</strong>」標籤，Getting
+              started 進度為 0/3，代表 Pro 福利尚未啟用。
+            </p>
+            <div class="screenshot-wrap">
+              <img
+                src="images/step-10b-copilot-free-badge.jpg"
+                alt="Copilot settings 顯示 Free 尚未升級為 Pro"
+                onload="imgLoaded(this)"
+                onerror="imgError(this)"
+              />
+              <div class="img-fallback">
+                <span class="fallback-icon">🖼️</span>
+                <span class="fallback-filename"
+                  >images/step-10b-copilot-free-badge.jpg</span
+                >
+                <span class="fallback-desc"
+                  >截圖內容：Copilot settings 頁面上方顯示「GitHub
+                  Copilot」旁有灰色「Free」標籤，Getting started 顯示 0/3
+                  complete 的畫面</span
+                >
+              </div>
+              <div class="img-caption">
+                ▲ 尚未生效：顯示 Free 標籤（72小時內正常）
+              </div>
+            </div>
+          </div>
+          <div class="card" style="border-color: #fca5a5; background: #fff5f5">
+            <h3 style="color: #dc2626">⚠️ 尚未生效畫面二</h3>
+            <p style="margin-bottom: 12px; color: var(--muted)">
+              點擊 Approved 頁面的 <strong>link</strong> 連結後，出現「<strong
+                >Try Copilot Pro for 30 days free</strong
+              >」與「Upgrade now」按鈕，<strong>請勿點擊</strong>，關閉此頁面等
+              72 小時後再操作。
+            </p>
+            <div class="screenshot-wrap">
+              <img
+                src="images/step-10c-copilot-pro-trial.jpg"
+                alt="Try Copilot Pro for 30 days free 畫面"
+                onload="imgLoaded(this)"
+                onerror="imgError(this)"
+              />
+              <div class="img-fallback">
+                <span class="fallback-icon">🖼️</span>
+                <span class="fallback-filename"
+                  >images/step-10c-copilot-pro-trial.jpg</span
+                >
+                <span class="fallback-desc"
+                  >截圖內容：顯示「Try Copilot Pro for 30 days
+                  free」標題與綠色「Upgrade
+                  now」按鈕的頁面，此為付費升級頁，請勿點擊</span
+                >
+              </div>
+              <div class="img-caption">
+                ▲ 尚未生效：出現付費試用頁（請勿點擊 Upgrade now）
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <div class="step-content">
+              <strong
+                >回到 GitHub Education 頁面，確認福利生效並點擊 link</strong
+              >
+              <p>
+                前往
+                <a href="https://github.com/settings/education" target="_blank"
+                  >github.com/settings/education</a
+                >，確認進度條已變成<strong>綠色 100%</strong
+                >，且左側狀態顯示「<strong>Coupon applied</strong
+                >」。找到頁面中的「To redeem Copilot, please sign up via this
+                <strong>link</strong>」，點擊 <strong>link</strong> 後進入「Use
+                GitHub Copilot for free」頁面。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-09b-coupon-applied.jpg"
+                  alt="Education Benefits 頁面：Coupon applied 100% 進度條"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-09b-coupon-applied.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：Education Benefits 頁面顯示「Coupon
+                    applied」與綠色 100% 進度條，狀態為「Verified (benefits
+                    available)」，並顯示到期日與 To redeem Copilot 的 link
+                    連結</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ 進度條 100%、Coupon applied：找到 link 並點擊
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>點擊「Get access to GitHub Copilot」</strong>
+              <p>
+                若教育資格已認定，頁面將顯示您符合免費資格的提示，點擊按鈕完成啟用。
+              </p>
+              <div class="callout callout-warn">
+                <span class="callout-icon">⚠️</span>
+                <div>
+                  通過審核後，福利最多需
+                  <strong>72 小時</strong
+                  >才會正式生效，若頁面尚未顯示免費資格請稍後再試。
+                </div>
+              </div>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-09-copilot-eligible.jpg"
+                  alt="Copilot settings 顯示教育免費資格"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-09-copilot-eligible.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：Copilot settings 頁面，顯示「You are eligible for
+                    free GitHub Copilot Pro」提示與「Get access to GitHub
+                    Copilot」按鈕</span
+                  >
+                </div>
+                <div class="img-caption">▲ 確認免費資格並點擊啟用</div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>前往 Copilot 設定頁</strong>
+              <p>
+                啟用後，點擊右上角個人大頭貼 → 選擇「<strong
+                  >Copilot settings</strong
+                >」，或直接前往
+                <a href="https://github.com/settings/copilot" target="_blank"
+                  >github.com/settings/copilot</a
+                >。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-08-copilot-menu.jpg"
+                  alt="GitHub 個人選單顯示 Copilot settings"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-08-copilot-menu.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：GitHub 右上角個人頭像展開選單，顯示「Copilot
+                    settings」選項</span
+                  >
+                </div>
+                <div class="img-caption">▲ 個人選單 → Copilot settings</div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>確認啟用成功</strong>
+              <p>
+                頁面頂部將顯示「<strong
+                  >GitHub Copilot Pro is active for your account</strong
+                >」與「You currently have an active Copilot Pro
+                subscription.」訊息，表示啟用成功。
+              </p>
+              <p style="color: var(--muted); font-size: 0.9rem">
+                頁面下方的 <strong>Usage</strong> 區塊顯示本月 Premium requests
+                使用量（初始為 0.0%），每月月初重置。<strong>Features</strong>
+                區塊可看到 Editor preview features、Copilot Chat in
+                GitHub.com、Copilot CLI、Copilot in GitHub Desktop
+                等功能皆為「Enabled」。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-10-copilot-active.jpg"
+                  alt="GitHub Copilot Pro is active for your account 啟用成功畫面"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-10-copilot-active.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：Settings → Copilot → Features
+                    頁面，頂部紅框顯示「GitHub Copilot Pro is active for your
+                    account」與「You currently have an active Copilot Pro
+                    subscription.」，以及 Usage 區塊顯示 Premium requests 0.0%
+                    的畫面</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ Copilot Pro 啟用成功：顯示「GitHub Copilot Pro is active for
+                  your account」
+                </div>
+              </div>
+              <div class="callout callout-ok">
+                <span class="callout-icon">🎉</span>
+                <div>
+                  恭喜！已成功啟用 GitHub Copilot Pro 教育版。請繼續完成 VS Code
+                  設定，即可開始使用。
+                </div>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ── VS Code 設定 ── -->
+      <section id="vscode">
+        <h2>💻 在 VS Code 中使用 Copilot Pro</h2>
+        <ol class="steps">
+          <li>
+            <div class="step-content">
+              <strong>安裝 Visual Studio Code</strong>
+              <p>
+                若尚未安裝，請前往
+                <a href="https://code.visualstudio.com" target="_blank"
+                  >code.visualstudio.com</a
+                >
+                下載對應作業系統版本（Windows / macOS / Linux）。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-11-vscode-download.jpg"
+                  alt="VS Code 官網下載頁面"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-11-vscode-download.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：code.visualstudio.com
+                    下載頁面，顯示各作業系統版本下載按鈕</span
+                  >
+                </div>
+                <div class="img-caption">▲ VS Code 官網下載頁面</div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>安裝 GitHub Copilot 擴充套件</strong>
+              <p>
+                開啟 VS Code，按
+                <code>Ctrl+Shift+X</code
+                >（macOS：<code>Cmd+Shift+X</code>）開啟擴充套件面板，搜尋「<strong
+                  >GitHub Copilot</strong
+                >」，安裝發行者為 <strong>GitHub</strong> 的官方套件。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-12-install-extension.jpg"
+                  alt="VS Code 安裝 GitHub Copilot 擴充套件"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-12-install-extension.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：VS Code Extensions 面板搜尋「GitHub
+                    Copilot」，顯示官方套件（發行者
+                    GitHub）與「Install」按鈕</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ Extensions 面板安裝 GitHub Copilot 官方套件
+                </div>
+              </div>
+              <div class="callout callout-info">
+                <span class="callout-icon">ℹ️</span>
+                <div>
+                  安裝「GitHub Copilot」後，「<strong
+                    >GitHub Copilot Chat</strong
+                  >」通常會一併安裝。若未自動安裝，請手動搜尋安裝。
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>點擊登入 GitHub 帳號</strong>
+              <p>
+                安裝完成後，VS Code
+                左側活動列底部<strong>帳號圖示（Accounts）</strong>點擊後，選擇「<strong
+                  >Sign in with GitHub to use GitHub Copilot</strong
+                >」。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-13-vscode-signin.jpg"
+                  alt="VS Code 帳號選單提示登入 Copilot"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-13-vscode-signin.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：VS Code 左下角帳號圖示展開後顯示「Sign in with
+                    GitHub to use GitHub Copilot」選項，或右下角狀態列 Copilot
+                    圖示登入提示</span
+                  >
+                </div>
+                <div class="img-caption">▲ VS Code 帳號選單 → 登入 GitHub</div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>瀏覽器跳出 GitHub 授權頁，選擇帳號並授權</strong>
+              <p>VS Code 將自動開啟瀏覽器，依序出現以下兩個畫面：</p>
+
+              <p
+                style="
+                  color: var(--muted);
+                  font-size: 0.9rem;
+                  margin: 14px 0 6px;
+                "
+              >
+                <strong>【畫面一】選擇授權帳號</strong>：出現「Authorize Visual
+                Studio Code」頁面，顯示目前已登入的 GitHub
+                帳號。確認帳號正確後，點擊「<strong>Continue</strong>」按鈕。若要改用其他帳號，點擊「Use
+                a different account」。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-14-github-authorize.jpg"
+                  alt="Authorize Visual Studio Code 選擇帳號授權"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-14-github-authorize.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：瀏覽器顯示「Authorize Visual Studio
+                    Code」頁面，列出已登入的 GitHub 帳號（Signed in as
+                    xxx）與「Continue」按鈕，以及「Use a different
+                    account」選項</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ 畫面一：選擇 GitHub 帳號，點擊「Continue」
+                </div>
+              </div>
+
+              <p
+                style="
+                  color: var(--muted);
+                  font-size: 0.9rem;
+                  margin: 18px 0 6px;
+                "
+              >
+                <strong>【畫面二】允許開啟 VS Code</strong>：瀏覽器跳出「要開啟
+                Visual Studio Code 嗎？」的確認對話框，並顯示「Launching Visual
+                Studio Code」頁面。點擊「<strong>開啟 Visual Studio Code</strong
+                >」返回編輯器。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-14b-launch-vscode.jpg"
+                  alt="瀏覽器要求開啟 VS Code 的確認對話框"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-14b-launch-vscode.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：瀏覽器顯示「Launching Visual Studio
+                    Code」頁面，同時跳出「要開啟 Visual Studio Code
+                    嗎？」對話框，包含「開啟 Visual Studio
+                    Code」與「取消」按鈕</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ 畫面二：點擊「開啟 Visual Studio Code」返回編輯器
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="step-content">
+              <strong>回到 VS Code，確認 Copilot 已啟用</strong>
+              <p>
+                授權後點擊瀏覽器「<strong>Open Visual Studio Code</strong
+                >」返回。右下角狀態列的 Copilot
+                圖示顯示正常（無警示符號），開啟程式碼檔案輸入幾個字即可看到灰色
+                AI 補全建議，按 <code>Tab</code> 接受。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-15-vscode-active.jpg"
+                  alt="VS Code Copilot 啟用成功顯示 Ghost Text 補全"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-15-vscode-active.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：VS Code 右下角狀態列 Copilot
+                    圖示已啟用（無警示符號），程式碼編輯區出現灰色 Ghost Text AI
+                    補全建議的畫面</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ Copilot 啟用成功：Ghost Text 程式碼補全示範
+                </div>
+              </div>
+              <div class="callout callout-ok">
+                <span class="callout-icon">✅</span>
+                <div>
+                  GitHub Copilot Pro 已成功連線！以下是兩個最常用的功能入口：
+                </div>
+              </div>
+
+              <p
+                style="
+                  color: var(--muted);
+                  font-size: 0.9rem;
+                  margin: 18px 0 6px;
+                "
+              >
+                <strong>【功能一】Copilot Chat 對話側欄</strong>：點擊 VS Code
+                右上角工具列的
+                <strong>Chat 圖示</strong
+                >（對話泡泡形狀，如下圖紅框處）即可開啟。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-15b-copilot-chat-toolbar.jpg"
+                  alt="VS Code 工具列 Copilot Chat 圖示位置"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-15b-copilot-chat-toolbar.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：VS Code 頂部選單列，右上角紅框標示 Copilot Chat
+                    對話圖示的位置</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ VS Code 右上角工具列：Copilot Chat 圖示（紅框處）
+                </div>
+              </div>
+
+              <p
+                style="
+                  color: var(--muted);
+                  font-size: 0.9rem;
+                  margin: 18px 0 6px;
+                "
+              >
+                <strong>【功能二】Chat 側欄介面</strong>：開啟後左側或右側會出現
+                Chat
+                面板，顯示歷史對話紀錄（SESSIONS）與底部輸入框。可直接輸入中文問題，並從下拉選單選擇
+                AI 模型（如 Claude Sonnet 4、GPT-4o 等）。按
+                <code>Tab</code> 接受程式碼補全建議，<code>Esc</code> 取消。
+              </p>
+              <div class="screenshot-wrap">
+                <img
+                  src="images/step-15c-copilot-chat-sidebar.jpg"
+                  alt="VS Code Copilot Chat 側欄介面"
+                  onload="imgLoaded(this)"
+                  onerror="imgError(this)"
+                />
+                <div class="img-fallback">
+                  <span class="fallback-icon">🖼️</span>
+                  <span class="fallback-filename"
+                    >images/step-15c-copilot-chat-sidebar.jpg</span
+                  >
+                  <span class="fallback-desc"
+                    >截圖內容：VS Code Copilot Chat 側欄，顯示 SESSIONS
+                    歷史對話記錄，底部有文字輸入框與 AI 模型選擇下拉選單（Claude
+                    Sonnet 4）的畫面</span
+                  >
+                </div>
+                <div class="img-caption">
+                  ▲ Copilot Chat 側欄：歷史對話、輸入框與模型選擇
+                </div>
+              </div>
+            </div>
+          </li>
+        </ol>
+
+        <h3>Copilot Chat 快速上手</h3>
+        <div class="card-grid" style="margin-top: 12px">
+          <div class="card">
+            <h3>💬 Chat 側欄</h3>
+            <p>
+              點擊左側活動列的 Copilot Chat
+              圖示，打開對話視窗，用自然語言詢問程式問題。
+            </p>
+          </div>
+          <div class="card">
+            <h3>⌨️ Inline Chat</h3>
+            <p>
+              選取程式碼後按
+              <code>Ctrl+I</code>（<code>Cmd+I</code>），可在行內直接對 Copilot
+              下指令修改或解釋程式碼。
+            </p>
+          </div>
+          <div class="card">
+            <h3>🔧 指令面板</h3>
+            <p>
+              按 <code>Ctrl+Shift+P</code>（<code>Cmd+Shift+P</code>），輸入
+              <code>Copilot</code> 可查看並執行所有相關指令。
+            </p>
+          </div>
+        </div>
+        <div class="callout callout-info" style="margin-top: 18px">
+          <span class="callout-icon">🔗</span>
+          <div>
+            官方完整設定說明：<a
+              href="https://code.visualstudio.com/docs/copilot/setup"
+              target="_blank"
+              >code.visualstudio.com/docs/copilot/setup</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ── FAQ ── -->
+      <section id="faq">
+        <h2>❓ 常見問題 Q&amp;A</h2>
+        <div class="faq-list">
+          <details>
+            <summary>🎓 Q1：學生申請後多久可以使用 Copilot Pro？</summary>
+            <div class="faq-answer">
+              通過 GitHub Education 審核後，教育福利最多需
+              <strong>72 小時</strong
+              >才會正式啟用。啟用後可收到學校信箱通知，前往
+              github.com/settings/copilot
+              即可開啟。整體流程最快當天完成，最慢約需 3 個工作天。
+            </div>
+          </details>
+
+          <details>
+            <summary>👩‍🏫 Q2：教師審核需要多久？</summary>
+            <div class="faq-answer">
+              教師申請通常需要 <strong>1 至 14 個工作天</strong>不等，取決於
+              GitHub
+              的人工審核排程與文件清晰度。建議提交清晰的任職證明文件，並確保學校信箱已通過驗證，以加快審核速度。
+            </div>
+          </details>
+
+          <details>
+            <summary>📧 Q3：我沒有學校 email，可以申請嗎？</summary>
+            <div class="faq-answer">
+              若沒有學校
+              email，仍可嘗試申請，但需上傳更完整的在學/任職證明文件（如在學證明書、教職員證照片）。有學校
+              email
+              並完成驗證，審核通過機率顯著較高。請聯繫電算中心確認是否可申請學校
+              email。
+            </div>
+          </details>
+
+          <details>
+            <summary>❌ Q4：申請被拒絕（Rejected）怎麼辦？</summary>
+            <div class="faq-answer">
+              常見拒絕原因與解決方式：
+              <ul>
+                <li>
+                  學校 email 未完成驗證 → 前往 Settings → Emails 補完驗證步驟
+                </li>
+                <li>文件照片不清晰 → 重新拍攝，確保文字清楚可辨</li>
+                <li>文件顯示資訊不足 → 改用在學證明書或含有效日期的學生證</li>
+                <li>學校名稱無法識別 → 補充上傳含學校抬頭的官方文件</li>
+              </ul>
+              可重新前往
+              <a href="https://github.com/settings/education" target="_blank"
+                >github.com/settings/education</a
+              >
+              重新提交申請。
+            </div>
+          </details>
+
+          <details>
+            <summary>⏰ Q5：Copilot Pro 教育版會到期嗎？</summary>
+            <div class="faq-answer">
+              是的。教育身分有效期通常為
+              <strong>2 年</strong>，或至預計畢業/離職日。到期前 GitHub
+              會提醒您重新驗證（Reverification）。只要仍具在學或在職資格，即可持續更新免費方案。
+            </div>
+          </details>
+
+          <details>
+            <summary>🔁 Q6：如何確認目前是 Copilot Pro 而非 Free？</summary>
+            <div class="faq-answer">
+              前往
+              <a href="https://github.com/settings/copilot" target="_blank"
+                >github.com/settings/copilot</a
+              >，若顯示「<strong>GitHub Copilot Pro — Free for Education</strong
+              >」或「<strong>Active (Free)</strong
+              >」，即表示已成功使用教育免費方案。
+            </div>
+          </details>
+
+          <details>
+            <summary>💻 Q7：除了 VS Code，Copilot Pro 支援哪些編輯器？</summary>
+            <div class="faq-answer">
+              GitHub Copilot Pro 支援多種主流開發工具，包括：
+              <ul>
+                <li>Visual Studio Code（最常用、功能最完整）</li>
+                <li>Visual Studio 2022</li>
+                <li>JetBrains IDE（IntelliJ、PyCharm、WebStorm 等）</li>
+                <li>Neovim / Vim</li>
+                <li>GitHub.com 網頁版（Copilot Chat）</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>🔐 Q8：我的程式碼會被 GitHub 儲存或拿去訓練嗎？</summary>
+            <div class="faq-answer">
+              根據 GitHub 官方說明，個人帳號的 Copilot
+              預設<strong>不會將程式碼用於訓練模型</strong>。可在 Settings →
+              Copilot → Policies 頁面確認並關閉「Allow GitHub to use my code
+              snippets for product improvements」選項，以進一步保護隱私。
+            </div>
+          </details>
+
+          <details>
+            <summary>🏫 Q9：學校需要事先與 GitHub 簽約才能申請嗎？</summary>
+            <div class="faq-answer">
+              不需要。GitHub Education 計畫是 GitHub
+              提供給<strong>個人</strong>（學生/教師）的免費方案，由個人自行申請並提供身分證明，不需要學校統一簽約或授權。只要學校為合法立案的教育機構，師生均可個別申請。
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ── 聯絡支援 ── -->
+      <section id="support">
+        <h2>📞 聯絡與支援</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>🏫 電算中心</h3>
+            <p>
+              若申請遇到問題，歡迎來信或親洽服務台。<br /><br />
+              📧 Email：<code>info@stu.edu.tw</code><br />
+              📍 地點：圖資大樓B1F
+            </p>
+          </div>
+          <div class="card">
+            <h3>🌐 GitHub 官方支援</h3>
+            <p>
+              帳號或資格問題，可直接聯繫 GitHub 官方：<br /><br />
+              🔗
+              <a href="https://support.github.com" target="_blank"
+                >support.github.com</a
+              ><br />
+              🔗
+              <a href="https://education.github.com" target="_blank"
+                >education.github.com</a
+              >
+            </p>
+          </div>
+          <div class="card">
+            <h3>📚 官方文件參考</h3>
+            <p>
+              🔗
+              <a href="https://docs.github.com/en/copilot" target="_blank"
+                >Copilot 官方文件</a
+              ><br />
+              🔗
+              <a href="https://docs.github.com/en/education" target="_blank"
+                >GitHub Education 文件</a
+              ><br />
+              🔗
+              <a
+                href="https://code.visualstudio.com/docs/copilot/setup"
+                target="_blank"
+                >VS Code Copilot 設定指南</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- /container -->
+
+    <!-- ════ Footer ════ -->
+    <footer>
+      <p>
+        <strong>本校電算中心</strong> 製作提供 ｜ 資料來源：<a
+          href="https://docs.github.com"
+          target="_blank"
+          >GitHub 官方文件</a
+        >、<a href="https://education.github.com" target="_blank"
+          >GitHub Education</a
+        >
+      </p>
+      <p style="margin-top: 6px; opacity: 0.7">
+        最後更新：2026 年 3 月 ｜ 如有疑問請聯絡電算中心
+      </p>
+    </footer>
+
+    <!-- ════ JavaScript ════ -->
+    <script>
+      /* Tab 切換 */
+      function switchTab(e, which) {
+        document
+          .querySelectorAll('.tab-panel')
+          .forEach((p) => p.classList.remove('active'));
+        document
+          .querySelectorAll('.tab-btn')
+          .forEach((b) => b.classList.remove('active'));
+        document.getElementById('tab-' + which).classList.add('active');
+        e.currentTarget.classList.add('active');
+      }
+
+      /* 圖片載入成功 → 隱藏 fallback */
+      function imgLoaded(img) {
+        var fb = img.nextElementSibling;
+        if (fb && fb.classList.contains('img-fallback'))
+          fb.style.display = 'none';
+      }
+
+      /* 圖片載入失敗 → 隱藏 img，顯示 fallback */
+      function imgError(img) {
+        img.style.display = 'none';
+        var fb = img.nextElementSibling;
+        if (fb && fb.classList.contains('img-fallback'))
+          fb.style.display = 'flex';
+      }
+
+      /* 頁面載入時對所有圖片做初始檢查 */
+      document.addEventListener('DOMContentLoaded', function () {
+        document
+          .querySelectorAll('.screenshot-wrap img')
+          .forEach(function (img) {
+            if (img.complete) {
+              if (img.naturalWidth === 0) imgError(img);
+              else imgLoaded(img);
+            }
+          });
+      });
+    </script>
+  </body>
+</html>
